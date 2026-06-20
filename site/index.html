@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIOFILME — Make it happen.</title>
+  <meta name="description" content="Comunicação, performance e branding com processo estruturado e visão individual. Para empresas que crescem com parceiros sérios." />
+  <meta name="theme-color" content="#2a63c9" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VIOFILME — Make it happen." />
+  <meta property="og:description" content="Comunicação, performance e branding com processo estruturado e visão individual." />
+  <meta property="og:site_name" content="Viofilme" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <!-- Fonts: Barlow -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Loader / intro -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__mark" id="loaderMark"></div>
+      <div class="loader__bar"><span id="loaderProgress"></span></div>
+      <div class="loader__count"><span id="loaderCount">0</span>%</div>
+    </div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__label"></span>
+  </div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#top" class="header__logo" data-cursor="início" aria-label="Viofilme — início">
+      <img src="assets/img/logo-horizontal.svg" alt="Viofilme" />
+    </a>
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <a href="#sobre" class="nav__link">Quem somos</a>
+      <a href="#servicos" class="nav__link">Ecossistema</a>
+      <a href="#produtos" class="nav__link">O que fazemos</a>
+      <a href="#resultados" class="nav__link">Resultados</a>
+      <a href="#metodo" class="nav__link">Método</a>
+    </nav>
+    <a href="#contato" class="btn btn--nav" data-cursor="vamos?">Agendar conversa</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__nav">
+      <a href="#sobre" class="mobile-menu__link"><span>01</span>Quem somos</a>
+      <a href="#servicos" class="mobile-menu__link"><span>02</span>Ecossistema</a>
+      <a href="#produtos" class="mobile-menu__link"><span>03</span>O que fazemos</a>
+      <a href="#resultados" class="mobile-menu__link"><span>04</span>Resultados</a>
+      <a href="#metodo" class="mobile-menu__link"><span>05</span>Método</a>
+      <a href="#contato" class="mobile-menu__link mobile-menu__link--cta"><span>→</span>Agendar conversa</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="https://www.instagram.com/viofilme/" target="_blank" rel="noopener">@viofilme</a>
+      <a href="https://www.linkedin.com/company/viofilme/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:contato@viofilme.com.br">contato@viofilme.com.br</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__eyebrow reveal-up">
+          <span class="dot"></span>
+          Agência de comunicação, performance &amp; branding
+        </div>
+
+        <h1 class="hero__title">
+          <span class="line"><span class="line__inner">Make it</span></span>
+          <span class="line"><span class="line__inner">happen<span class="accent">.</span></span></span>
+        </h1>
+
+        <p class="hero__lead reveal-up">
+          Comunicação, performance e branding — com <strong>processo estruturado</strong>
+          e <strong>visão individual</strong>. Para empresas que crescem com parceiros sérios.
+        </p>
+
+        <div class="hero__actions reveal-up">
+          <a href="#contato" class="btn btn--primary" data-cursor="vamos?">
+            Quero agendar
+            <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#servicos" class="btn btn--ghost" data-cursor="explorar">Ver o ecossistema</a>
+        </div>
+
+        <div class="hero__mark" aria-hidden="true">
+          <svg class="hero__icon" id="heroIcon" viewBox="0 0 251.5 209.62" fill="none">
+            <path d="M125.7,209.62c-12.86,0-25.72-4.9-35.51-14.69l-57.3-57.3,55.78-55.78,92.82,92.82-20.26,20.26c-9.79,9.79-22.65,14.69-35.51,14.69ZM73.87,137.63l36.81,36.81c8.21,8.21,21.51,8.28,29.81.23l-51.83-51.83-14.79,14.79Z"/>
+            <path d="M195.79,160.36l-92.81-92.81,15.2-15.2c2.92-2.92,7.67-2.92,10.59,0l87.52,87.52-20.49,20.49Z"/>
+            <path d="M230.75,125.39l-89.85-89.85c-3.77-3.77-8.74-6.21-14.05-6.52-6.16-.37-12.01,1.86-16.33,6.18L20.49,125.23,0,104.74,89.46,15.29C99.16,5.58,112.31-.13,126.04,0c13.23.13,25.65,5.34,35.02,14.71l90.19,90.19-20.49,20.49Z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Role para descobrir</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Performance</span><span class="sep">✦</span>
+        <span>Branding</span><span class="sep">✦</span>
+        <span>Comunicação</span><span class="sep">✦</span>
+        <span>Crescimento consistente</span><span class="sep">✦</span>
+        <span>Performance</span><span class="sep">✦</span>
+        <span>Branding</span><span class="sep">✦</span>
+        <span>Comunicação</span><span class="sep">✦</span>
+        <span>Crescimento consistente</span><span class="sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ===================== QUEM SOMOS ===================== -->
+    <section class="section about" id="sobre">
+      <div class="container">
+        <div class="section__head">
+          <span class="section__tag reveal-up">01 — Quem somos</span>
+          <h2 class="section__title reveal-lines">
+            Fazemos o que agências fazem.
+            <em>A diferença está em como&nbsp;fazemos.</em>
+          </h2>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__text">
+            <p class="reveal-up">
+              Não chegamos para reinventar a roda. Reconhecemos as boas práticas do setor,
+              as praticamos com rigor e já identificamos os erros comuns que evitamos.
+            </p>
+            <p class="reveal-up">
+              Cada cliente tem um contexto próprio. Nosso trabalho começa por entender isso —
+              e equilibrar performance e branding porque os dois se constroem juntos.
+            </p>
+            <blockquote class="quote reveal-up">
+              <span aria-hidden="true">“</span>Não prometemos resultado. Prometemos
+              <mark>dedicação total</mark> ao seu crescimento.
+            </blockquote>
+          </div>
+
+          <div class="pillars">
+            <article class="pillar" data-tilt>
+              <span class="pillar__num">01</span>
+              <h3>Processo estruturado</h3>
+              <p>Etapas claras, responsáveis definidos, entregáveis documentados desde o início.</p>
+            </article>
+            <article class="pillar" data-tilt>
+              <span class="pillar__num">02</span>
+              <h3>Visão individual</h3>
+              <p>Nenhuma solução padrão. Cada cliente é tratado de forma única.</p>
+            </article>
+            <article class="pillar" data-tilt>
+              <span class="pillar__num">03</span>
+              <h3>Performance + branding</h3>
+              <p>Conteúdo bonito sem resultado não interessa. Resultado sem identidade, também não.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS ===================== -->
+    <section class="stats" id="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal-up">
+          <span class="stat__num" data-count="180" data-suffix="+">0</span>
+          <span class="stat__label">projetos entregues</span>
+        </div>
+        <div class="stat reveal-up">
+          <span class="stat__num" data-count="4">0</span>
+          <span class="stat__label">anos no mercado</span>
+        </div>
+        <div class="stat reveal-up">
+          <span class="stat__num" data-count="3">0</span>
+          <span class="stat__label">áreas integradas por cliente</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ECOSSISTEMA / SERVIÇOS ===================== -->
+    <section class="section services" id="servicos">
+      <div class="container">
+        <div class="section__head">
+          <span class="section__tag reveal-up">02 — O ecossistema</span>
+          <h2 class="section__title reveal-lines">
+            Três frentes. Um objetivo:
+            <em>crescimento consistente.</em>
+          </h2>
+          <p class="section__sub reveal-up">Como nossas áreas se conectam.</p>
+        </div>
+
+        <div class="services__list">
+          <article class="service" data-cursor="">
+            <div class="service__index">01</div>
+            <div class="service__main">
+              <h3 class="service__title">Performance &amp; growth</h3>
+              <p class="service__desc">Aquisição e canais pagos com foco em resultado mensurável.</p>
+            </div>
+            <ul class="service__tags">
+              <li>Tráfego pago</li><li>E-mail mkt</li><li>WPP mkt</li><li>Marketplace</li>
+            </ul>
+            <div class="service__line"></div>
+          </article>
+
+          <article class="service" data-cursor="">
+            <div class="service__index">02</div>
+            <div class="service__main">
+              <h3 class="service__title">Comunicação &amp; branding</h3>
+              <p class="service__desc">Identidade e conteúdo que constroem autoridade de marca.</p>
+            </div>
+            <ul class="service__tags">
+              <li>Social media</li><li>UGC creators</li><li>Personal brand</li><li>ID visual</li>
+            </ul>
+            <div class="service__line"></div>
+          </article>
+
+          <article class="service" data-cursor="">
+            <div class="service__index">03</div>
+            <div class="service__main">
+              <h3 class="service__title">Serviços &amp; desenvolvimento</h3>
+              <p class="service__desc">Ativos e infraestrutura que sustentam o crescimento.</p>
+            </div>
+            <ul class="service__tags">
+              <li>Sites &amp; e-comm</li><li>CRM</li><li>Vioday</li><li>Campanhas</li>
+            </ul>
+            <div class="service__line"></div>
+          </article>
+        </div>
+
+        <p class="services__note reveal-up">
+          <span class="services__note-i">i</span>
+          Trabalhamos com serviços recorrentes e pontuais. Cada cliente entra pelo que faz mais
+          sentido para o seu momento — e expande conforme a parceria evolui.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUTOS ===================== -->
+    <section class="section products" id="produtos">
+      <div class="container">
+        <div class="section__head">
+          <span class="section__tag reveal-up">03 — O que fazemos</span>
+          <h2 class="section__title reveal-lines">
+            Recorrentes para construir.
+            <em>Pontuais para acelerar.</em>
+          </h2>
+        </div>
+
+        <h3 class="products__group reveal-up">Serviços recorrentes</h3>
+        <div class="cards">
+          <article class="card card--feature" data-tilt>
+            <div class="card__top"><span class="card__badge">Presença consistente</span></div>
+            <h4>Social media</h4>
+            <p>Gestão estratégica com identidade, cadência e conteúdo que comunica o negócio.</p>
+          </article>
+          <article class="card card--feature" data-tilt>
+            <div class="card__top"><span class="card__badge">Aquisição eficiente</span></div>
+            <h4>Tráfego pago</h4>
+            <p>Campanhas com método, testes estruturados e acompanhamento de resultados.</p>
+          </article>
+          <article class="card card--feature" data-tilt>
+            <div class="card__top"><span class="card__badge">Conteúdo que converte</span></div>
+            <h4>UGC creators</h4>
+            <p>Conteúdo por criadores reais — autêntico, nativo nas plataformas e de alta conversão.</p>
+          </article>
+        </div>
+
+        <h3 class="products__group reveal-up">Serviços pontuais em destaque</h3>
+        <div class="cards cards--small">
+          <article class="card" data-tilt><h4>Sites, LPs &amp; e-commerce</h4><p>Desenvolvimento web com foco em conversão e identidade de marca.</p></article>
+          <article class="card" data-tilt><h4>CRM &amp; comercial</h4><p>Implementação de CRM e treinamento de times de vendas.</p></article>
+          <article class="card" data-tilt><h4>ID visual &amp; branding</h4><p>Identidade visual e branding estratégico para marcas que querem se posicionar com clareza.</p></article>
+          <article class="card" data-tilt><h4>Produção audiovisual</h4><p>Vioday, photoshooting e campanhas editoriais — conteúdo de alto impacto visual.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESULTADOS / CASES ===================== -->
+    <section class="section results" id="resultados">
+      <div class="container">
+        <div class="section__head">
+          <span class="section__tag reveal-up">04 — Evidência</span>
+          <h2 class="section__title reveal-lines">
+            Números reais.
+            <em>Sem métricas de vaidade.</em>
+          </h2>
+          <p class="section__sub reveal-up">O que entregamos na prática.</p>
+        </div>
+
+        <div class="cases">
+          <article class="case reveal-up">
+            <header class="case__head">
+              <span class="case__kicker">Case 01 — E-commerce · Moda</span>
+              <p class="case__context">CAC elevado, funil sem visibilidade, base inativa. Reestruturação completa em 3 meses.</p>
+            </header>
+            <div class="case__metrics">
+              <div class="metric"><span class="metric__value" data-count="61" data-prefix="-" data-suffix="%">0</span><span class="metric__label">Custo por lead</span></div>
+              <div class="metric"><span class="metric__value" data-count="4.8" data-suffix="×" data-decimals="1">0</span><span class="metric__label">ROAS em 90 dias</span></div>
+              <div class="metric"><span class="metric__value" data-count="230" data-prefix="+" data-suffix="%">0</span><span class="metric__label">Receita recorrente</span></div>
+            </div>
+          </article>
+
+          <article class="case reveal-up">
+            <header class="case__head">
+              <span class="case__kicker">Case 02 — SaaS B2B · RH</span>
+              <p class="case__context">Churn alto no 3º mês, sem nurturing e reputação digital sem gestão ativa.</p>
+            </header>
+            <div class="case__metrics">
+              <div class="metric"><span class="metric__value" data-count="44" data-prefix="-" data-suffix="%">0</span><span class="metric__label">Churn em 90 dias</span></div>
+              <div class="metric"><span class="metric__value" data-count="2.9" data-suffix="×" data-decimals="1">0</span><span class="metric__label">LTV médio</span></div>
+              <div class="metric"><span class="metric__value" data-count="180" data-prefix="+" data-suffix="%">0</span><span class="metric__label">NPS em 6 meses</span></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="results__foot reveal-up">Mais empresas em operação confiam na Viofilme.</p>
+      </div>
+    </section>
+
+    <!-- ===================== MÉTODO ===================== -->
+    <section class="section method" id="metodo">
+      <div class="container">
+        <div class="section__head">
+          <span class="section__tag reveal-up">05 — O método</span>
+          <h2 class="section__title reveal-lines">
+            Uma agência séria.
+            <em>Com processo.</em>
+          </h2>
+          <p class="section__sub reveal-up">
+            Nosso diferencial não é um “método revolucionário”: é consistência,
+            cuidado e transparência em cada entrega.
+          </p>
+        </div>
+
+        <div class="method__steps">
+          <article class="step">
+            <div class="step__num"><span>01</span></div>
+            <div class="step__body">
+              <h3>Diagnóstico antes de proposta</h3>
+              <p>Entendemos seu contexto antes de sugerir qualquer solução. Não existe resposta padrão.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step__num"><span>02</span></div>
+            <div class="step__body">
+              <h3>Escopo claro desde o início</h3>
+              <p>Entregáveis, prazos e responsáveis documentados antes de qualquer execução começar.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step__num"><span>03</span></div>
+            <div class="step__body">
+              <h3>Ciclos de revisão contínua</h3>
+              <p>O trabalho não termina na entrega — acompanhamos, ajustamos e evoluímos com você.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step__num"><span>04</span></div>
+            <div class="step__body">
+              <h3>Comunicação direta</h3>
+              <p>Você fala com quem executa e sabe exatamente o que está acontecendo a cada etapa.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA / CONTATO ===================== -->
+    <section class="cta" id="contato">
+      <div class="cta__bg" aria-hidden="true">
+        <div class="cta__glow"></div>
+      </div>
+      <div class="container">
+        <span class="section__tag section__tag--light reveal-up">06 — Próximo passo</span>
+        <h2 class="cta__title reveal-lines">
+          Uma conversa de 45&nbsp;min pode mudar muito
+          <em>do que vem por aí.</em>
+        </h2>
+        <p class="cta__lead reveal-up">
+          A Reunião de Diagnóstico é nossa primeira conversa de verdade — sem apresentação
+          genérica, sem script pronto. Só nós dois entendendo onde você está e o que faz
+          sentido construir.
+        </p>
+
+        <div class="cta__panel">
+          <div class="journey reveal-up">
+            <h3 class="journey__title">Jornada do cliente</h3>
+            <ol class="journey__steps">
+              <li class="is-now"><span>1</span> Conheceu a Viofilme <em>(você aqui)</em></li>
+              <li class="is-next"><span>2</span> Reunião de diagnóstico <em>(próximo passo)</em></li>
+              <li><span>3</span> Proposta personalizada</li>
+              <li><span>4</span> Início da parceria</li>
+            </ol>
+          </div>
+
+          <div class="fit reveal-up">
+            <h3 class="fit__title">Essa conversa faz sentido se você…</h3>
+            <ul class="fit__list">
+              <li class="yes">Fatura acima de R$500k/ano e quer crescer com consistência</li>
+              <li class="yes">Quer um parceiro que entenda o negócio — não só execute tarefas</li>
+              <li class="yes">Está disposto a construir uma relação de longo prazo com transparência</li>
+              <li class="no">Não é pra quem busca o menor preço — é pra quem quer o melhor resultado</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta__action reveal-up">
+          <div class="cta__action-text">
+            <strong>Reunião de diagnóstico de performance</strong>
+            <span>45 min · sem compromisso · sem apresentação genérica</span>
+          </div>
+          <a href="mailto:contato@viofilme.com.br?subject=Quero%20agendar%20uma%20reuni%C3%A3o%20de%20diagn%C3%B3stico" class="btn btn--primary btn--lg" data-cursor="bora!">
+            Quero agendar
+            <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/img/logo-horizontal.svg" alt="Viofilme" class="footer__logo" />
+        <p class="footer__tag">Make it happen.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/viofilme/" target="_blank" rel="noopener" class="social" aria-label="Instagram da Viofilme" data-cursor="seguir">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/viofilme/" target="_blank" rel="noopener" class="social" aria-label="LinkedIn da Viofilme" data-cursor="conectar">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0ZM3.4 8.4h3.1V21H3.4V8.4Zm5.06 0h2.97v1.72h.04c.41-.78 1.42-1.6 2.93-1.6 3.13 0 3.71 2.06 3.71 4.74V21h-3.1v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94V21h-3.1V8.4Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Rodapé">
+        <a href="#sobre">Quem somos</a>
+        <a href="#servicos">Ecossistema</a>
+        <a href="#produtos">O que fazemos</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#metodo">Método</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="footer__contact">
+        <a href="https://www.instagram.com/viofilme/" target="_blank" rel="noopener" data-cursor="seguir">@viofilme</a>
+        <a href="https://www.linkedin.com/company/viofilme/" target="_blank" rel="noopener" data-cursor="conectar">LinkedIn</a>
+        <a href="https://viofilme.com.br" target="_blank" rel="noopener">viofilme.com.br</a>
+        <a href="mailto:contato@viofilme.com.br">contato@viofilme.com.br</a>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© <span id="year">2026</span> Viofilme. Todos os direitos reservados.</span>
+      <span>Comunicação · Performance · Branding</span>
+    </div>
+  </footer>
+
+  <!-- Libs (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
