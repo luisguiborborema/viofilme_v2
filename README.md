@@ -37,6 +37,9 @@ O `index.html` está na **raiz**, então é deploy direto, sem configuração:
 2. **Framework Preset:** `Other` · **Build Command:** vazio · **Output Directory:** `./`
 3. Deploy. A Vercel serve os arquivos estáticos automaticamente.
 
+O `vercel.json` na raiz já define cache dos assets (`stale-while-revalidate`),
+HTML sempre revalidado (deploys aparecem na hora) e headers de segurança.
+
 > Não há etapa de build — também funciona em Netlify, Cloudflare Pages ou GitHub Pages.
 
 ## Animações / diferencial
