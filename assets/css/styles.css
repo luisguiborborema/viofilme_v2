@@ -779,7 +779,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .footer__nav a:hover, .footer__contact a:hover { color: var(--lime); }
 .footer__bar {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 0.4rem 1.4rem; text-align: center;
   padding-block: 1.8rem;
   font-size: 0.85rem; color: var(--muted-2);
   font-family: var(--cond); letter-spacing: 0.06em;
