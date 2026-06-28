@@ -54,7 +54,34 @@ HTML sempre revalidado (deploys aparecem na hora) e headers de segurança.
 ## Como editar o conteúdo
 
 Todo o texto está em `index.html`, dividido por seções comentadas
-(`HERO`, `QUEM SOMOS`, `ECOSSISTEMA`, `PRODUTOS`, `RESULTADOS`, `MÉTODO`, `CTA`).
-Os números dos contadores ficam nos atributos `data-count` / `data-prefix` /
-`data-suffix` / `data-decimals`. Cores e tipografia são variáveis no topo de
-`assets/css/styles.css` (`--blue`, `--lime`, `--cream`, `--coral`).
+(`HERO`, `PROVA SOCIAL`, `QUEM SOMOS`, `ECOSSISTEMA`, `PRODUTOS`, `RESULTADOS`,
+`MÉTODO`, `CTA`). Os números dos contadores ficam nos atributos `data-count` /
+`data-prefix` / `data-suffix` / `data-decimals`. Cores e tipografia são variáveis
+no topo de `assets/css/styles.css` (`--blue`, `--lime`, `--cream`, `--coral`).
+
+## Formulário de agendamento (integração com CRM)
+
+O formulário (`#leadForm`) já valida campos, tem máscara de WhatsApp, estado de
+loading e sucesso inline. Para enviar os leads ao **Pipedrive / RD Station**:
+
+1. Crie um cenário no **Make (Integromat)** ou **Zapier** com um *webhook* que
+   receba JSON e crie o negócio no Pipedrive + dispare o fluxo no RD Station.
+2. Cole a URL do webhook no atributo `data-endpoint` do `<form id="leadForm">`
+   em `index.html`.
+
+O payload enviado (JSON) tem: `nome, email, whatsapp, empresa, faturamento,
+segmento, desafio, origem, pagina`. **Sem `data-endpoint` configurado**, o
+formulário cai num *fallback* por e-mail (`mailto:` para contato@viofilme.com.br),
+para nenhum lead se perder. Nunca coloque tokens de API no front-end.
+
+## Ativos de produção pendentes (slots já preparados)
+
+A versão final só vai 100% ao ar com estes itens (produção externa):
+
+- **Vídeo do hero** → coloque em `assets/video/hero.mp4` (≤5MB, sem áudio,
+  loop 20–40s). Já carrega sozinho no desktop, com fallback ao fundo atual.
+- **Logos de clientes** (prova social) · **fotos da equipe/escritório** ·
+  **mockups dos cases** · **depoimento em vídeo** · **reel de portfólio**.
+- **Ícones animados (Lottie)** no Método.
+
+> A imagem de compartilhamento (`assets/img/og-cover.png`) já foi gerada.

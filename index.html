@@ -4,15 +4,28 @@
   <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIOFILME — Make it happen.</title>
-  <meta name="description" content="Comunicação, performance e branding com processo estruturado e visão individual. Para empresas que crescem com parceiros sérios." />
+  <title>VIOFILME — Make it happen. | Marketing que vende, conteúdo que encanta</title>
+  <meta name="description" content="Agência boutique de marketing e audiovisual. Performance, branding e comunicação com processo estruturado para empresas que faturam acima de R$500k/ano." />
   <meta name="theme-color" content="#2a63c9" />
+  <link rel="canonical" href="https://viofilme-v2.vercel.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://viofilme-v2.vercel.app/" />
   <meta property="og:title" content="VIOFILME — Make it happen." />
-  <meta property="og:description" content="Comunicação, performance e branding com processo estruturado e visão individual." />
+  <meta property="og:description" content="Marketing que vende. Conteúdo que encanta. Performance, branding e comunicação com processo estruturado." />
   <meta property="og:site_name" content="Viofilme" />
+  <meta property="og:image" content="https://viofilme-v2.vercel.app/assets/img/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Viofilme — Make it happen." />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VIOFILME — Make it happen." />
+  <meta name="twitter:description" content="Marketing que vende. Conteúdo que encanta." />
+  <meta name="twitter:image" content="https://viofilme-v2.vercel.app/assets/img/og-cover.png" />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 
@@ -82,6 +95,13 @@
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="hero">
       <div class="hero__bg" aria-hidden="true">
+        <!-- Slot de vídeo: ative colocando o arquivo em assets/video/hero.mp4
+             (≤5MB, sem áudio, loop 20-40s). Só carrega no desktop e, se falhar,
+             mantém o fundo animado abaixo. Ver data-hero-video em main.js. -->
+        <video class="hero__video" id="heroVideo" data-hero-video
+               muted loop playsinline preload="none"
+               data-src="assets/video/hero.mp4"></video>
+        <div class="hero__video-overlay"></div>
         <div class="hero__glow hero__glow--1"></div>
         <div class="hero__glow hero__glow--2"></div>
         <div class="hero__grid"></div>
@@ -140,6 +160,29 @@
       </div>
     </div>
 
+    <!-- ===================== PROVA SOCIAL / NÚMEROS ===================== -->
+    <section class="stats" id="numeros">
+      <div class="container">
+        <p class="stats__valueprop reveal-up">
+          Marketing que vende. <span>Conteúdo que encanta.</span>
+        </p>
+        <div class="stats__grid">
+          <div class="stat reveal-up">
+            <span class="stat__num" data-count="180" data-suffix="+">0</span>
+            <span class="stat__label">projetos entregues</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat__num" data-count="2">0</span>
+            <span class="stat__label">anos no mercado</span>
+          </div>
+          <div class="stat reveal-up">
+            <span class="stat__num" data-count="3">0</span>
+            <span class="stat__label">áreas integradas por cliente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== QUEM SOMOS ===================== -->
     <section class="section about" id="sobre">
       <div class="container">
@@ -162,8 +205,8 @@
               e equilibrar performance e branding porque os dois se constroem juntos.
             </p>
             <blockquote class="quote reveal-up">
-              <span aria-hidden="true">“</span>Não prometemos resultado. Prometemos
-              <mark>dedicação total</mark> ao seu crescimento.
+              <span aria-hidden="true">“</span>Crescimento não é sorte. É <mark>método</mark> —
+              o que torna o resultado previsível, e não uma aposta.
             </blockquote>
           </div>
 
@@ -184,24 +227,6 @@
               <p>Conteúdo bonito sem resultado não interessa. Resultado sem identidade, também não.</p>
             </article>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== STATS ===================== -->
-    <section class="stats" id="stats">
-      <div class="container stats__grid">
-        <div class="stat reveal-up">
-          <span class="stat__num" data-count="180" data-suffix="+">0</span>
-          <span class="stat__label">projetos entregues</span>
-        </div>
-        <div class="stat reveal-up">
-          <span class="stat__num" data-count="4">0</span>
-          <span class="stat__label">anos no mercado</span>
-        </div>
-        <div class="stat reveal-up">
-          <span class="stat__num" data-count="3">0</span>
-          <span class="stat__label">áreas integradas por cliente</span>
         </div>
       </div>
     </section>
@@ -261,6 +286,18 @@
           Trabalhamos com serviços recorrentes e pontuais. Cada cliente entra pelo que faz mais
           sentido para o seu momento — e expande conforme a parceria evolui.
         </p>
+
+        <div class="tools reveal-up">
+          <span class="tools__label">Ferramentas que dominamos</span>
+          <ul class="tools__list">
+            <li>Meta Ads</li>
+            <li>Google Ads</li>
+            <li>GA4</li>
+            <li>Pipedrive</li>
+            <li>RD Station</li>
+            <li>ClickUp</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -342,7 +379,13 @@
           </article>
         </div>
 
-        <p class="results__foot reveal-up">Mais empresas em operação confiam na Viofilme.</p>
+        <div class="results__cta reveal-up">
+          <p class="results__foot">Mais empresas em operação confiam na Viofilme.</p>
+          <a href="#contato" class="btn btn--ghost" data-cursor="quero!">
+            Quero resultados assim
+            <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -356,8 +399,8 @@
             <em>Com processo.</em>
           </h2>
           <p class="section__sub reveal-up">
-            Nosso diferencial não é um “método revolucionário”: é consistência,
-            cuidado e transparência em cada entrega.
+            Nosso diferencial é simples: consistência, cuidado e transparência
+            em cada entrega. Você sempre sabe onde o seu projeto está.
           </p>
         </div>
 
@@ -433,15 +476,92 @@
           </div>
         </div>
 
-        <div class="cta__action reveal-up">
-          <div class="cta__action-text">
+        <div class="lead reveal-up" id="agendar">
+          <div class="lead__head">
             <strong>Reunião de diagnóstico de performance</strong>
             <span>45 min · sem compromisso · sem apresentação genérica</span>
           </div>
-          <a href="mailto:contato@viofilme.com.br?subject=Quero%20agendar%20uma%20reuni%C3%A3o%20de%20diagn%C3%B3stico" class="btn btn--primary btn--lg" data-cursor="bora!">
-            Quero agendar
-            <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+
+          <form class="lead__form" id="leadForm" novalidate
+                data-endpoint=""
+                aria-label="Formulário de agendamento de diagnóstico">
+            <div class="field">
+              <label for="lf-nome">Nome completo *</label>
+              <input id="lf-nome" name="nome" type="text" autocomplete="name" required />
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-email">E-mail *</label>
+              <input id="lf-email" name="email" type="email" autocomplete="email" required />
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-whats">WhatsApp *</label>
+              <input id="lf-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required />
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-empresa">Nome da empresa *</label>
+              <input id="lf-empresa" name="empresa" type="text" autocomplete="organization" required />
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-fat">Faturamento médio mensal *</label>
+              <select id="lf-fat" name="faturamento" required>
+                <option value="" disabled selected>Selecione…</option>
+                <option value="até R$100k">Até R$100k</option>
+                <option value="R$100k–500k">R$100k – R$500k</option>
+                <option value="R$500k–1M">R$500k – R$1M</option>
+                <option value="acima de R$1M">Acima de R$1M</option>
+              </select>
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field">
+              <label for="lf-seg">Segmento / setor *</label>
+              <input id="lf-seg" name="segmento" type="text" list="lf-seg-list" required />
+              <datalist id="lf-seg-list">
+                <option value="E-commerce"></option>
+                <option value="SaaS / Tecnologia"></option>
+                <option value="Serviços"></option>
+                <option value="Indústria"></option>
+                <option value="Saúde"></option>
+                <option value="Educação"></option>
+                <option value="Varejo"></option>
+              </datalist>
+              <small class="field__error" data-error></small>
+            </div>
+
+            <div class="field field--full">
+              <label for="lf-desafio">Principal desafio <span class="opt">(opcional)</span></label>
+              <textarea id="lf-desafio" name="desafio" rows="3" placeholder="O que mais trava o crescimento hoje?"></textarea>
+            </div>
+
+            <div class="lead__submit field--full">
+              <button type="submit" class="btn btn--primary btn--lg" id="leadSubmit" data-cursor="bora!">
+                <span class="btn__text">Agendar minha reunião de diagnóstico</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+                <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="lead__privacy">Seus dados são usados só para esta conversa. Sem spam.</p>
+            </div>
+
+            <p class="lead__formerror" id="leadFormError" role="alert" hidden></p>
+          </form>
+
+          <div class="lead__success" id="leadSuccess" role="status" hidden>
+            <div class="lead__success-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3>Recebemos! 🎉</h3>
+            <p>Em breve alguém do time entra em contato pelo WhatsApp ou e-mail para
+              encaixar sua reunião de diagnóstico. Enquanto isso, dá uma olhada no nosso
+              <a href="https://www.instagram.com/viofilme/" target="_blank" rel="noopener">Instagram</a>.</p>
+          </div>
         </div>
       </div>
     </section>

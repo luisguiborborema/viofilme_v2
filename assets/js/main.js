@@ -49,7 +49,9 @@
         if (!target) return;
         e.preventDefault();
         closeMobileMenu();
-        const top = target.getBoundingClientRect().top + window.scrollY - 10;
+        const header = $("#header");
+        const offset = (header ? header.offsetHeight : 70) + 16;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
         if (lenis) lenis.scrollTo(top, { duration: 1.2 });
         else window.scrollTo({ top, behavior: prefersReduced ? "auto" : "smooth" });
       });
@@ -382,7 +384,188 @@
   }
 
   /* =========================================================
-     10. MISC
+     10. ACTIVE NAV LINK (IntersectionObserver)
+     ========================================================= */
+  function initActiveNav() {
+    const links = $$(".nav__link");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    const map = new Map();
+    links.forEach((link) => {
+      const id = link.getAttribute("href");
+      const sec = id && id.length > 1 ? document.querySelector(id) : null;
+      if (sec) map.set(sec, link);
+    });
+    if (!map.size) return;
+
+    const setActive = (link) => {
+      links.forEach((l) => l.classList.toggle("is-active", l === link));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(map.get(entry.target));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    map.forEach((_, sec) => io.observe(sec));
+  }
+
+  /* =========================================================
+     11. HERO BACKGROUND VIDEO (lazy, desktop only, graceful)
+     ========================================================= */
+  function initHeroVideo() {
+    const video = $("#heroVideo");
+    if (!video) return;
+    // Desktop only + respeita data-saver e reduced motion
+    const narrow = window.matchMedia("(max-width: 768px)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (narrow || isTouch || prefersReduced || saveData) return;
+
+    const src = video.getAttribute("data-src");
+    if (!src) return;
+
+    const load = () => {
+      video.src = src;
+      video.addEventListener("canplay", () => {
+        video.classList.add("is-playing");
+        const p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      }, { once: true });
+      // Se o arquivo não existir / falhar, mantém o fundo animado atual.
+      video.addEventListener("error", () => video.removeAttribute("src"), { once: true });
+    };
+    if (document.readyState === "complete") load();
+    else window.addEventListener("load", load, { once: true });
+  }
+
+  /* =========================================================
+     12. LEAD FORM (validação + estados + envio)
+     ========================================================= */
+  function initLeadForm() {
+    const form = $("#leadForm");
+    if (!form) return;
+    const submitBtn = $("#leadSubmit");
+    const formError = $("#leadFormError");
+    const success = $("#leadSuccess");
+
+    const required = $$("input[required], select[required]", form);
+
+    const validators = {
+      email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      whatsapp: (v) => (v.replace(/\D/g, "").length >= 10),
+    };
+    const messages = {
+      empty: "Campo obrigatório.",
+      email: "Digite um e-mail válido.",
+      whatsapp: "Digite um WhatsApp válido com DDD.",
+    };
+
+    const fieldOf = (input) => input.closest(".field");
+    const setError = (input, msg) => {
+      const field = fieldOf(input);
+      if (!field) return;
+      field.classList.toggle("is-invalid", !!msg);
+      const slot = $(".field__error", field);
+      if (slot) slot.textContent = msg || "";
+    };
+    const validate = (input) => {
+      const v = input.value.trim();
+      if (!v) { setError(input, messages.empty); return false; }
+      if (validators[input.name] && !validators[input.name](v)) {
+        setError(input, messages[input.name]); return false;
+      }
+      setError(input, ""); return true;
+    };
+
+    // máscara leve de telefone (BR)
+    const phone = $("#lf-whats");
+    if (phone) {
+      phone.addEventListener("input", () => {
+        let d = phone.value.replace(/\D/g, "").slice(0, 11);
+        if (d.length > 6) phone.value = `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+        else if (d.length > 2) phone.value = `(${d.slice(0,2)}) ${d.slice(2)}`;
+        else if (d.length > 0) phone.value = `(${d}`;
+      });
+    }
+
+    required.forEach((input) => {
+      input.addEventListener("blur", () => validate(input));
+      input.addEventListener("input", () => {
+        if (fieldOf(input) && fieldOf(input).classList.contains("is-invalid")) validate(input);
+      });
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (formError) { formError.hidden = true; formError.textContent = ""; }
+
+      let ok = true;
+      required.forEach((input) => { if (!validate(input)) ok = false; });
+      if (!ok) {
+        const firstBad = $(".field.is-invalid input, .field.is-invalid select", form);
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.origem = "site viofilme";
+      data.pagina = location.href;
+
+      const endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      if (submitBtn) submitBtn.classList.add("is-loading");
+
+      try {
+        if (endpoint) {
+          // Envia para webhook (Make/Zapier → Pipedrive + RD Station).
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          if (!res.ok) throw new Error("bad status " + res.status);
+          showSuccess();
+        } else {
+          // Sem endpoint configurado ainda: fallback por e-mail (lead não se perde).
+          mailtoFallback(data);
+          showSuccess();
+        }
+      } catch (err) {
+        if (submitBtn) submitBtn.classList.remove("is-loading");
+        if (formError) {
+          formError.hidden = false;
+          formError.innerHTML = 'Não foi possível enviar agora. Tente de novo ou fale direto: ' +
+            '<a href="mailto:contato@viofilme.com.br">contato@viofilme.com.br</a>.';
+        }
+      }
+    });
+
+    function showSuccess() {
+      if (submitBtn) submitBtn.classList.remove("is-loading");
+      form.hidden = true;
+      if (success) {
+        success.hidden = false;
+        if (hasGSAP && !prefersReduced) {
+          gsap.from(success, { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" });
+        }
+        success.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
+      }
+    }
+
+    function mailtoFallback(data) {
+      const subject = encodeURIComponent("Agendamento de diagnóstico — " + (data.empresa || data.nome || ""));
+      const body = encodeURIComponent(
+        `Nome: ${data.nome}\nE-mail: ${data.email}\nWhatsApp: ${data.whatsapp}\n` +
+        `Empresa: ${data.empresa}\nFaturamento: ${data.faturamento}\nSegmento: ${data.segmento}\n` +
+        `Desafio: ${data.desafio || "-"}\n`
+      );
+      // abre o cliente de e-mail sem trocar de página (mantém o estado de sucesso)
+      const a = document.createElement("a");
+      a.href = `mailto:contato@viofilme.com.br?subject=${subject}&body=${body}`;
+      a.target = "_blank";
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+  }
+
+  /* =========================================================
+     13. MISC
      ========================================================= */
   function initYear() {
     const y = $("#year");
@@ -406,6 +589,9 @@
     initAnchors();
     initMobileMenu();
     initHeader();
+    initActiveNav();
+    initHeroVideo();
+    initLeadForm();
     initCursor();
     initMagnetic();
     initTilt();

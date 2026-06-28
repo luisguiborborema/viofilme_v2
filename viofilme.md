@@ -17,7 +17,7 @@
 
 **Números-chave**
 - +180 projetos entregues
-- 4 anos no mercado
+- 2 anos no mercado
 - 3 áreas integradas por cliente
 
 ---
